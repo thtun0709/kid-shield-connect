@@ -1,0 +1,25 @@
+/* Custom styling for QR Code Scanner */
+#qr-reader {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#qr-reader video {
+  border-radius: 1rem;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+}
+
+#qr-reader__dashboard_section {
+  display: none !important;
+}
+
+#qr-reader__scan_region {
+  border-radius: 1rem !important;
+}
+
+/* Scanning animation overlay */
+.qr-shaded-region {
+  border: 2px solid rgba(var(--primary), 0.5) !important;
+}

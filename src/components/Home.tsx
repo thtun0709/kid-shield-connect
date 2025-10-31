@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Shield, Clock, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { AppHeader } from '@/components/AppHeader';
 import AllowedApps from './AllowedApps';
 import RequestModal from './RequestModal';
 import BottomNav from './BottomNav';
@@ -17,21 +18,17 @@ const Home = () => {
   const formatTime = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    return `${hours}h ${mins}m`;
+    return `${hours} giờ ${mins} phút`;
   };
 
   return (
     <div className="min-h-screen gradient-safe pb-24">
-      {/* Safe Mode Banner */}
-      <div className="bg-primary text-primary-foreground px-6 py-4 shadow-soft">
-        <div className="flex items-center gap-3 max-w-lg mx-auto">
-          <Shield className="h-6 w-6 flex-shrink-0" />
-          <div>
-            <h2 className="text-lg font-semibold">Chế độ an toàn đã được bật</h2>
-            <p className="text-sm opacity-90">Được bảo vệ bởi phụ huynh</p>
-          </div>
-        </div>
-      </div>
+      {/* Header */}
+      <AppHeader 
+        icon={Shield}
+        title="Kid Shield"
+        subtitle="Chế độ an toàn đã được bật"
+      />
 
       {/* Screen Time Card */}
       <div className="px-6 pt-6 max-w-lg mx-auto">
@@ -44,7 +41,7 @@ const Home = () => {
           <div className="space-y-3">
             <div className="flex justify-between items-baseline">
               <span className="text-3xl font-bold text-primary">{formatTime(screenTimeUsed)}</span>
-              <span className="text-muted-foreground">of {formatTime(screenTimeLimit)}</span>
+              <span className="text-muted-foreground"> {formatTime(screenTimeLimit)}</span>
             </div>
             
             <Progress value={screenTimePercentage} className="h-3" />

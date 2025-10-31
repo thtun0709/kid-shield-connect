@@ -1,4 +1,4 @@
-import { Home, Shield, User } from 'lucide-react';
+import { Home, Smartphone, User } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const BottomNav = () => {
@@ -7,8 +7,9 @@ const BottomNav = () => {
 
   const navItems = [
     { icon: Home, label: 'Trang chủ', path: '/home' },
-    // { icon: Shield, label: 'Các ứng dụng bị chặn', path: '/blocked' },
-    { icon: User, label: 'Thông tin cá nhân', path: '/profile' },
+        { icon: User, label: 'Thông tin cá nhân', path: '/profile' },
+    { icon: Smartphone, label: 'Ghép nối', path: '/pairing' },
+   
   ];
 
   return (

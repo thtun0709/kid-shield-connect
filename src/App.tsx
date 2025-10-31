@@ -7,6 +7,7 @@ import Splash from "./components/Splash";
 import Home from "./components/Home";
 import Blocked from "./components/Blocked";
 import Profile from "./components/Profile";
+import DevicePairing from "./components/DevicePairing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Splash />} />
           <Route path="/home" element={<Home />} />
           <Route path="/blocked" element={<Blocked />} />
+          <Route path="/pairing" element={<DevicePairing />} />
           <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

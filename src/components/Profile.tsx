@@ -1,5 +1,6 @@
 import { User, Clock, Shield, BookOpen } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { AppHeader } from '@/components/AppHeader';
 import BottomNav from './BottomNav';
 
 const Profile = () => {
@@ -19,11 +20,11 @@ const Profile = () => {
   return (
     <div className="min-h-screen gradient-safe pb-12">
       {/* Header */}
-      <div className="bg-primary text-primary-foreground px-6 py-4 shadow-soft">
-        <div className="max-w-lg mx-auto">
-          <h1 className="text-xl font-semibold">Thông tin cá nhân</h1>
-        </div>
-      </div>
+      <AppHeader 
+        icon={User}
+        title="Thông tin cá nhân"
+        subtitle="Người dùng được bảo vệ"
+      />
 
       <div className="px-6 pt-6 max-w-lg mx-auto space-y-6">
         {/* Profile Card */}
