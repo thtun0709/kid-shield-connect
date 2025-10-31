@@ -18,16 +18,16 @@ const Blocked = () => {
         
         <div className="space-y-3">
           <h1 className="text-3xl font-bold text-foreground">
-            Content Blocked
+            Nội dung bị chặn
           </h1>
           <p className="text-lg text-muted-foreground">
-            This app or website is blocked by your parent's settings
+            Ứng dụng hoặc trang web này bị chặn bởi cài đặt của phụ huynh
           </p>
         </div>
 
         <div className="bg-muted/50 border border-border rounded-3xl p-5 space-y-2">
           <p className="text-sm text-foreground/80">
-            Your parents have restricted access to this content to keep you safe online.
+            Phụ huynh đã hạn chế truy cập vào nội dung này để bảo vệ bạn khi sử dụng internet.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ const Blocked = () => {
             className="w-full rounded-xl h-12 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
           >
             <MessageSquare className="h-5 w-5" />
-            Ask for Permission
+            Yêu cầu quyền truy cập
           </Button>
           
           <Button 
@@ -47,12 +47,12 @@ const Blocked = () => {
             onClick={() => window.history.back()}
             className="w-full rounded-xl h-12 font-semibold"
           >
-            Go Back
+            Quay lại
           </Button>
         </div>
 
         <p className="text-xs text-muted-foreground pt-4">
-          Learn more about staying safe online in your Profile
+          Tìm hiểu thêm về cách an toàn khi sử dụng internet trong thông tin cá nhân của bạn
         </p>
       </div>
 

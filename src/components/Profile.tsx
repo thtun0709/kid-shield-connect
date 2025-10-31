@@ -4,16 +4,16 @@ import BottomNav from './BottomNav';
 
 const Profile = () => {
   const stats = [
-    { label: 'Daily Limit', value: '3 hours', icon: Clock },
-    { label: 'Safe Apps', value: '6 apps', icon: Shield },
-    { label: 'Learning Time', value: '45 mins', icon: BookOpen },
+    { label: 'Giới hạn hàng ngày', value: '3 giờ', icon: Clock },
+    { label: 'Các ứng dụng an toàn', value: '6 ứng dụng', icon: Shield },
+    { label: 'Thời gian học', value: '45 phút', icon: BookOpen },
   ];
 
   const safetyTips = [
-    'Never share personal information online',
-    'Always ask your parents before downloading new apps',
-    'Take regular breaks to rest your eyes',
-    'Tell your parents if something online makes you uncomfortable',
+    'Không chia sẻ thông tin cá nhân trực tuyến',
+    'Luôn hỏi phụ huynh trước khi tải xuống ứng dụng mới',
+    'Nghỉ ngơi đều đặn để nghỉ mắt',
+    'Nói với phụ huynh nếu có điều gì trực tuyến khiến bạn khó chịu',
   ];
 
   return (
@@ -21,7 +21,7 @@ const Profile = () => {
       {/* Header */}
       <div className="bg-primary text-primary-foreground px-6 py-4 shadow-soft">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-xl font-semibold">Your Profile</h1>
+          <h1 className="text-xl font-semibold">Thông tin cá nhân</h1>
         </div>
       </div>
 
@@ -33,7 +33,7 @@ const Profile = () => {
           </div>
           <div className="text-center">
             <h2 className="text-2xl font-bold text-card-foreground">Alex</h2>
-            <p className="text-muted-foreground">Protected User</p>
+            <p className="text-muted-foreground">Người dùng được bảo vệ</p>
           </div>
         </Card>
 
@@ -58,7 +58,7 @@ const Profile = () => {
         <Card className="p-6 shadow-card border-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-card-foreground">
             <Shield className="h-5 w-5 text-primary" />
-            Online Safety Tips
+            Mẹo an toàn trực tuyến
           </h3>
           <ul className="space-y-3">
             {safetyTips.map((tip, index) => (
@@ -73,10 +73,10 @@ const Profile = () => {
         {/* Educational Banner */}
         <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl p-6 text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <h4 className="font-semibold text-foreground mb-2">
-            Keep Learning! 📚
+            Tiếp tục học tập! 📚
           </h4>
           <p className="text-sm text-muted-foreground">
-            Your parents have set up these protections because they care about you. Stay curious and safe!
+            Phụ huynh đã thiết lập các bảo vệ này vì họ quan tâm đến bạn. Tiếp tục tò mò và an toàn!
           </p>
         </div>
       </div>

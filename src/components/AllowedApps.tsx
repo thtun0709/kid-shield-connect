@@ -6,12 +6,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import YouTubeKids from './YouTubeKids';
 
 const allowedApps = [
-  { id: 1, name: 'YouTube Kids', icon: Youtube, color: 'bg-red-500' },
-  { id: 2, name: 'Khan Academy', icon: BookOpen, color: 'bg-green-500' },
-  { id: 3, name: 'Calculator', icon: Calculator, color: 'bg-blue-500' },
-  { id: 4, name: 'Music', icon: Music, color: 'bg-purple-500' },
-  { id: 5, name: 'Educational Games', icon: Gamepad2, color: 'bg-orange-500' },
-  { id: 6, name: 'Google Classroom', icon: Video, color: 'bg-indigo-500' },
+  { id: 1, name: 'YouTube cho trẻ em', icon: Youtube, color: 'bg-red-500' },
+  { id: 2, name: 'Học online', icon: BookOpen, color: 'bg-green-500' },
+  { id: 3, name: 'Máy tính', icon: Calculator, color: 'bg-blue-500' },
+  { id: 4, name: 'Nhạc', icon: Music, color: 'bg-purple-500' },
+  { id: 5, name: 'Trò chơi giáo dục', icon: Gamepad2, color: 'bg-orange-500' },
+  { id: 6, name: 'Lớp học trực tuyến', icon: Video, color: 'bg-indigo-500' },
 ];
 
 const AllowedApps = () => {
@@ -63,7 +63,7 @@ const AllowedApps = () => {
                 className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
               >
                 <X className="h-4 w-4" />
-                <span className="sr-only">Close</span>
+                <span className="sr-only">Đóng</span>
               </button>
             </div>
           </DialogHeader>

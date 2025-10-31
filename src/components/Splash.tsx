@@ -24,11 +24,11 @@ const Splash = () => {
       </h1>
       
       <p className="text-center text-xl text-white/90 max-w-md animate-fade-in">
-        Safe Mode Activated
+        Chế độ an toàn đã được bật
       </p>
       
       <p className="mt-4 text-center text-base text-white/75 max-w-md animate-fade-in">
-        You're browsing safely under your parent's protection
+        Bạn đang duyệt web an toàn dưới sự bảo vệ của phụ huynh
       </p>
       
       <div className="mt-12 flex gap-2 animate-pulse-gentle">

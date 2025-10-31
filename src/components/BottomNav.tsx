@@ -6,9 +6,9 @@ const BottomNav = () => {
   const location = useLocation();
 
   const navItems = [
-    { icon: Home, label: 'Home', path: '/home' },
-    { icon: Shield, label: 'Blocked', path: '/blocked' },
-    { icon: User, label: 'Profile', path: '/profile' },
+    { icon: Home, label: 'Trang chủ', path: '/home' },
+    // { icon: Shield, label: 'Các ứng dụng bị chặn', path: '/blocked' },
+    { icon: User, label: 'Thông tin cá nhân', path: '/profile' },
   ];
 
   return (

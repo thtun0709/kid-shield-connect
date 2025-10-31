@@ -27,8 +27,8 @@ const Home = () => {
         <div className="flex items-center gap-3 max-w-lg mx-auto">
           <Shield className="h-6 w-6 flex-shrink-0" />
           <div>
-            <h2 className="text-lg font-semibold">Safe Mode is ON</h2>
-            <p className="text-sm opacity-90">Protected by your parents</p>
+            <h2 className="text-lg font-semibold">Chế độ an toàn đã được bật</h2>
+            <p className="text-sm opacity-90">Được bảo vệ bởi phụ huynh</p>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ const Home = () => {
         <div className="bg-card rounded-3xl p-6 shadow-card animate-fade-in">
           <div className="flex items-center gap-3 mb-4">
             <Clock className="h-6 w-6 text-primary" />
-            <h3 className="text-lg font-semibold text-card-foreground">Screen Time Today</h3>
+            <h3 className="text-lg font-semibold text-card-foreground">Thời gian sử dụng màn hình hôm nay</h3>
           </div>
           
           <div className="space-y-3">
@@ -50,7 +50,7 @@ const Home = () => {
             <Progress value={screenTimePercentage} className="h-3" />
             
             <p className="text-sm text-muted-foreground">
-              {formatTime(screenTimeLimit - screenTimeUsed)} remaining today
+              {formatTime(screenTimeLimit - screenTimeUsed)} còn lại hôm nay
             </p>
           </div>
         </div>
@@ -58,7 +58,7 @@ const Home = () => {
 
       {/* Allowed Apps Section */}
       <div className="px-6 pt-6 max-w-lg mx-auto">
-        <h3 className="text-xl font-semibold mb-4 text-foreground">Your Allowed Apps Today</h3>
+        <h3 className="text-xl font-semibold mb-4 text-foreground">Các ứng dụng được phép sử dụng hôm nay</h3>
         <AllowedApps />
       </div>
 
@@ -66,10 +66,10 @@ const Home = () => {
       <div className="px-6 pt-6 max-w-lg mx-auto">
         <div className="bg-accent/10 border border-accent/20 rounded-3xl p-5 animate-fade-in">
           <h4 className="font-semibold text-accent mb-2 flex items-center gap-2">
-            <span className="text-lg">💡</span> Tip of the Day
+              <span className="text-lg">💡</span> Mẹo hôm nay
           </h4>
           <p className="text-sm text-foreground/80">
-            Remember to take a break every 30 minutes to rest your eyes and stretch!
+            Nhớ nghỉ ngơi ít nhất 30 phút để nghỉ mắt và tập thể dục!
           </p>
         </div>
       </div>
@@ -82,7 +82,7 @@ const Home = () => {
           className="shadow-soft rounded-full h-14 px-8 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
         >
           <Plus className="h-5 w-5" />
-          Request More Time
+          Yêu cầu thêm thời gian
         </Button>
       </div>
 

@@ -52,33 +52,33 @@ const RequestModal = ({ open, onOpenChange }: RequestModalProps) => {
         {!submitted ? (
           <>
             <DialogHeader>
-              <DialogTitle className="text-2xl">Request Access</DialogTitle>
+              <DialogTitle className="text-2xl">Yêu cầu truy cập</DialogTitle>
               <DialogDescription>
-                Ask your parent for more time or access to a blocked app
+                Yêu cầu phụ huynh cho thêm thời gian hoặc truy cập vào ứng dụng bị chặn
               </DialogDescription>
             </DialogHeader>
             
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="reason">Reason</Label>
+                <Label htmlFor="reason">Lý do</Label>
                 <Select value={reason} onValueChange={setReason}>
                   <SelectTrigger id="reason" className="rounded-xl">
-                    <SelectValue placeholder="Select a reason" />
+                    <SelectValue placeholder="Chọn lý do" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="homework">Homework</SelectItem>
-                    <SelectItem value="learning">Learning & Education</SelectItem>
-                    <SelectItem value="entertainment">Entertainment</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="homework">Bài tập về nhà</SelectItem>
+                    <SelectItem value="learning">Học tập & Giáo dục</SelectItem>
+                    <SelectItem value="entertainment">Giải trí</SelectItem>
+                    <SelectItem value="other">Khác</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message">Message (Optional)</Label>
+                <Label htmlFor="message">Lời nhắn (Tùy chọn)</Label>
                 <Textarea
                   id="message"
-                  placeholder="Tell your parent why you need this..."
+                  placeholder="Nói với phụ huynh tại sao bạn cần điều này..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="rounded-xl resize-none"
@@ -92,7 +92,7 @@ const RequestModal = ({ open, onOpenChange }: RequestModalProps) => {
               className="w-full rounded-xl h-12 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
               <Send className="h-4 w-4" />
-              Send Request
+              Gửi yêu cầu
             </Button>
           </>
         ) : (
@@ -101,9 +101,9 @@ const RequestModal = ({ open, onOpenChange }: RequestModalProps) => {
               <CheckCircle2 className="h-16 w-16 text-accent" />
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-semibold mb-2">Request Sent!</h3>
+              <h3 className="text-xl font-semibold mb-2">Yêu cầu đã được gửi!</h3>
               <p className="text-muted-foreground">
-                Wait for your parent's approval
+                Chờ phụ huynh phê duyệt
               </p>
             </div>
           </div>
