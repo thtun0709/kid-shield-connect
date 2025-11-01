@@ -1,9 +1,30 @@
-import { User, Clock, Shield, BookOpen } from 'lucide-react';
+import { useState } from 'react';
+import { User, Clock, Shield, BookOpen, LogOut, Lock } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { PinPad } from '@/components/ui/pin-pad';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { AppHeader } from '@/components/AppHeader';
+import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 import BottomNav from './BottomNav';
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const username = localStorage.getItem('kidUsername') || 'Alex';
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+  const [parentPin, setParentPin] = useState('');
+  const [pinError, setPinError] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+
   const stats = [
     { label: 'Giới hạn hàng ngày', value: '3 giờ', icon: Clock },
     { label: 'Các ứng dụng an toàn', value: '6 ứng dụng', icon: Shield },
@@ -16,6 +37,53 @@ const Profile = () => {
     'Nghỉ ngơi đều đặn để nghỉ mắt',
     'Nói với phụ huynh nếu có điều gì trực tuyến khiến bạn khó chịu',
   ];
+
+  const handleLogoutClick = () => {
+    setShowLogoutDialog(true);
+    setParentPin('');
+    setPinError(false);
+  };
+
+  const handleVerifyPin = async () => {
+    // Mock parent PIN - in production, this should be verified with backend
+    const correctPin = '1234'; // This should come from parent's settings
+    
+    if (parentPin === correctPin) {
+      setIsVerifying(true);
+      
+      // Simulate verification delay
+      setTimeout(() => {
+        localStorage.removeItem('kidToken');
+        localStorage.removeItem('kidUsername');
+        setShowLogoutDialog(false);
+        toast({
+          title: "Đã đăng xuất",
+          description: "Hẹn gặp lại bạn! 👋",
+        });
+        navigate('/login');
+      }, 500);
+    } else {
+      setPinError(true);
+      
+      // Auto clear error and PIN after showing error
+      setTimeout(() => {
+        setPinError(false);
+        setParentPin('');
+      }, 1500);
+      
+      toast({
+        title: "Mã PIN không đúng",
+        description: "Vui lòng hỏi phụ huynh để lấy mã PIN",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleCancelLogout = () => {
+    setShowLogoutDialog(false);
+    setParentPin('');
+    setPinError(false);
+  };
 
   return (
     <div className="min-h-screen gradient-safe pb-12">
@@ -33,10 +101,102 @@ const Profile = () => {
             <User className="h-16 w-16 text-primary" />
           </div>
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-card-foreground">Alex</h2>
+            <h2 className="text-2xl font-bold text-card-foreground">{username}</h2>
             <p className="text-muted-foreground">Người dùng được bảo vệ</p>
           </div>
+          
+          <Button
+            onClick={handleLogoutClick}
+            variant="outline"
+            className="mt-2 gap-2"
+          >
+            <LogOut className="h-4 w-4" />
+            Đăng xuất
+          </Button>
         </Card>
+
+        {/* Logout PIN Dialog */}
+        <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <div className="flex justify-center mb-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Lock className="h-8 w-8 text-primary" />
+                </div>
+              </div>
+              <DialogTitle className="text-center text-xl">Xác nhận đăng xuất</DialogTitle>
+              <DialogDescription className="text-center">
+                Nhập mã PIN của phụ huynh để đăng xuất
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="py-4">
+              <PinPad
+                value={parentPin}
+                onChange={(value) => {
+                  setParentPin(value);
+                  setPinError(false);
+                  
+                  // Auto verify when PIN length reaches 4
+                  if (value.length === 4) {
+                    const correctPin = '1234';
+                    
+                    if (value === correctPin) {
+                      setIsVerifying(true);
+                      
+                      setTimeout(() => {
+                        localStorage.removeItem('kidToken');
+                        localStorage.removeItem('kidUsername');
+                        setShowLogoutDialog(false);
+                        toast({
+                          title: "Đã đăng xuất",
+                          description: "Hẹn gặp lại bạn! 👋",
+                        });
+                        navigate('/login');
+                      }, 500);
+                    } else {
+                      setPinError(true);
+                      
+                      setTimeout(() => {
+                        setPinError(false);
+                        setParentPin('');
+                      }, 1500);
+                      
+                      toast({
+                        title: "Mã PIN không đúng",
+                        description: "Vui lòng hỏi phụ huynh để lấy mã PIN",
+                        variant: "destructive",
+                      });
+                    }
+                  }
+                }}
+                maxLength={4}
+              />
+              {pinError && (
+                <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+                  <p className="text-sm text-destructive text-center font-medium">
+                    ❌ Mã PIN không chính xác
+                  </p>
+                </div>
+              )}
+              <p className="text-xs text-muted-foreground text-center">
+                Hỏi phụ huynh để lấy mã PIN đăng xuất
+              </p>
+            </div>
+
+            <DialogFooter className="flex gap-2 sm:gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCancelLogout}
+                disabled={isVerifying}
+                className="w-full"
+              >
+                Hủy bỏ
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-3">

@@ -6,8 +6,15 @@ const Splash = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check if user is already logged in
+    const kidToken = localStorage.getItem('kidToken');
+    
     const timer = setTimeout(() => {
-      navigate('/home');
+      if (kidToken) {
+        navigate('/home');
+      } else {
+        navigate('/login');
+      }
     }, 2500);
 
     return () => clearTimeout(timer);
