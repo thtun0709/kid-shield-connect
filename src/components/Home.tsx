@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import { Shield, Clock, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Shield, Clock } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { AppHeader } from '@/components/AppHeader';
 import AllowedApps from './AllowedApps';
-import RequestModal from './RequestModal';
 import BottomNav from './BottomNav';
 
 const Home = () => {
-  const [isRequestOpen, setIsRequestOpen] = useState(false);
-  
   // Mock data
   const screenTimeUsed = 105; // minutes
   const screenTimeLimit = 180; // 3 hours
@@ -60,7 +56,7 @@ const Home = () => {
       </div>
 
       {/* Digital Wellbeing Tip */}
-      <div className="px-6 pt-6 max-w-lg mx-auto">
+      <div className="px-6 pt-6 max-w-lg mx-auto pb-6">
         <div className="bg-accent/10 border border-accent/20 rounded-3xl p-5 animate-fade-in">
           <h4 className="font-semibold text-accent mb-2 flex items-center gap-2">
               <span className="text-lg">💡</span> Mẹo hôm nay
@@ -71,19 +67,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Floating Request Button */}
-      <div className="fixed bottom-6 left-0 right-0 flex justify-center px-6">
-        <Button 
-          size="lg"
-          onClick={() => setIsRequestOpen(true)}
-          className="shadow-soft rounded-full h-14 px-8 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-        >
-          <Plus className="h-5 w-5" />
-          Yêu cầu thêm thời gian
-        </Button>
-      </div>
-
-      <RequestModal open={isRequestOpen} onOpenChange={setIsRequestOpen} />
       <BottomNav />
     </div>
   );

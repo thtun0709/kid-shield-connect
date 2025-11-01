@@ -7,8 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [pin, setPin] = useState("");
+  const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -19,22 +18,22 @@ const Login = () => {
 
     // Simulate API call
     setTimeout(() => {
-      if (username && pin.length >= 4) {
-        // Mock token for kid
+      if (phone && phone.length >= 10) {
+        // Mock token for kid - always use "Alex" as username
         const mockToken = "kid-token-" + Date.now();
         localStorage.setItem("kidToken", mockToken);
-        localStorage.setItem("kidUsername", username);
+        localStorage.setItem("kidUsername", "Alex");
         
         toast({
           title: "🎉 Chào mừng!",
-          description: `Xin chào ${username}! Chúc bạn một ngày vui vẻ!`,
+          description: "Xin chào Alex! Chúc bạn một ngày vui vẻ!",
         });
         
         navigate("/home");
       } else {
         toast({
           title: "Đăng nhập thất bại",
-          description: "Vui lòng kiểm tra tên và mã PIN của bạn",
+          description: "Vui lòng nhập số điện thoại hợp lệ",
           variant: "destructive",
         });
       }
@@ -51,8 +50,8 @@ const Login = () => {
           </div>
           <h2 className="mt-6 text-2xl font-bold text-foreground">Parental Shield</h2>
           <div className="mt-2 flex items-center gap-2">
-            {/* <h3 className="text-3xl font-bold text-foreground">Xin chào!</h3> */}
-            {/* <Smile className="h-8 w-8 text-primary" /> */}
+            <h3 className="text-3xl font-bold text-foreground">Xin chào Alex!</h3>
+            <Smile className="h-8 w-8 text-primary" />
           </div>
           <p className="mt-3 text-center text-base text-muted-foreground">
             Đăng nhập để sử dụng thiết bị an toàn
@@ -62,36 +61,22 @@ const Login = () => {
         <form onSubmit={handleLogin} className="mt-8 space-y-6">
           <div className="space-y-5">
             <div>
-              <Label htmlFor="username" className="text-base">Tên của bạn</Label>
+              <Label htmlFor="phone" className="text-base">Số điện thoại</Label>
               <Input
-                id="username"
-                name="username"
-                type="text"
-                autoComplete="username"
+                id="phone"
+                name="phone"
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel"
                 required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Nhập tên của bạn"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                placeholder="Nhập số điện thoại"
+                maxLength={11}
                 className="mt-2 h-12 text-base"
               />
-            </div>
-
-            <div>
-              <Label htmlFor="pin" className="text-base">Mã PIN</Label>
-              <Input
-                id="pin"
-                name="pin"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={pin}
-                onChange={(e) => setPin(e.target.value)}
-                placeholder="Nhập mã PIN 4-6 số"
-                maxLength={6}
-                className="mt-2 h-12 text-center text-2xl tracking-widest"
-              />
               <p className="mt-2 text-xs text-muted-foreground">
-                Mã PIN do phụ huynh cung cấp
+                Số điện thoại do phụ huynh cung cấp
               </p>
             </div>
           </div>

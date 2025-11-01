@@ -19,7 +19,7 @@ import BottomNav from './BottomNav';
 const Profile = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const username = localStorage.getItem('kidUsername') || 'Alex';
+  const username = 'Thanh Tùng'; // Fixed username
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [parentPin, setParentPin] = useState('');
   const [pinError, setPinError] = useState(false);
