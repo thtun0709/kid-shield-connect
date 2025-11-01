@@ -50,8 +50,8 @@ const Login = () => {
           </div>
           <h2 className="mt-6 text-2xl font-bold text-foreground">Parental Shield</h2>
           <div className="mt-2 flex items-center gap-2">
-            <h3 className="text-3xl font-bold text-foreground">Xin chào Alex!</h3>
-            <Smile className="h-8 w-8 text-primary" />
+            {/* <h3 className="text-3xl font-bold text-foreground">Xin chào Alex!</h3> */}
+            {/* <Smile className="h-8 w-8 text-primary" /> */}
           </div>
           <p className="mt-3 text-center text-base text-muted-foreground">
             Đăng nhập để sử dụng thiết bị an toàn
