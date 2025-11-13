@@ -26,7 +26,7 @@ const Login = () => {
         
         toast({
           title: "🎉 Chào mừng!",
-          description: "Xin chào Alex! Chúc bạn một ngày vui vẻ!",
+          description: "Xin chào Thanh Tùng! Chúc bạn một ngày vui vẻ!",
         });
         
         navigate("/home");
