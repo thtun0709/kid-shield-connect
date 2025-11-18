@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Shield, Clock } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
+import { Button } from '@/components/ui/button';
 import { AppHeader } from '@/components/AppHeader';
+import { CountdownTimer } from '@/components/CountdownTimer';
 import AllowedApps from './AllowedApps';
 import BottomNav from './BottomNav';
 
@@ -10,11 +12,17 @@ const Home = () => {
   const screenTimeUsed = 105; // minutes
   const screenTimeLimit = 180; // 3 hours
   const screenTimePercentage = (screenTimeUsed / screenTimeLimit) * 100;
+  const [showCountdown, setShowCountdown] = useState(false);
 
   const formatTime = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return `${hours} giờ ${mins} phút`;
+  };
+
+  const handleTimeUp = () => {
+    alert('⏰ Hết giờ sử dụng rồi! Hãy nghỉ ngơi nhé! 🎉');
+    setShowCountdown(false);
   };
 
   return (
@@ -45,9 +53,28 @@ const Home = () => {
             <p className="text-sm text-muted-foreground">
               {formatTime(screenTimeLimit - screenTimeUsed)} còn lại hôm nay
             </p>
+
+            <Button 
+              onClick={() => setShowCountdown(!showCountdown)}
+              className="w-full mt-4"
+              variant={showCountdown ? "destructive" : "default"}
+            >
+              {showCountdown ? '⏸️ Tắt đồng hồ đếm ngược' : '▶️ Bật đồng hồ đếm ngược'}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Countdown Timer Section */}
+      {showCountdown && (
+        <div className="px-6 pt-6 max-w-lg mx-auto">
+          <CountdownTimer 
+            totalMinutes={screenTimeLimit - screenTimeUsed}
+            onTimeUp={handleTimeUp}
+            activityName="sử dụng thiết bị"
+          />
+        </div>
+      )}
 
       {/* Allowed Apps Section */}
       <div className="px-6 pt-6 max-w-lg mx-auto">
